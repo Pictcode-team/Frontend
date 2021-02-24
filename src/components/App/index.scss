@@ -1,0 +1,17 @@
+$labelColor: white;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: yellow;
+  background: blue;
+  height: 100vh;
+  h1 {
+    color: $labelColor;
+  }
+}
