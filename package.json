@@ -1,0 +1,23 @@
+{
+  "name": "transfer-frontend",
+  "version": "1.0.0",
+  "description": "'Frontend for QR Code Transfer'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Transfer-team/QRCodeTransfer.git"
+  },
+  "keywords": [
+    "React",
+    "QR"
+  ],
+  "author": "Xavier Garcia <xaviergn60@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Transfer-team/QRCodeTransfer/issues"
+  },
+  "homepage": "https://github.com/Transfer-team/QRCodeTransfer#readme"
+}
