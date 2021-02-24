@@ -12,7 +12,8 @@
       {
         "runtime": "automatic"
       }
-    ]
+    ],
+    ["@babel/preset-typescript"]
   ],
-  "plugins": ["babel-plugin-transform-class-properties"]
+  "plugins": ["react-refresh/babel"]
 }
