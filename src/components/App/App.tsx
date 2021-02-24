@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./styles.scss";
-import * as logo from './../../assets/React.png';
+import logo from './../../assets/React.png';
 
 export default function App() {
   return (

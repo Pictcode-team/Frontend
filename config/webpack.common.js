@@ -5,7 +5,12 @@ const path = require('path');
 
 //images rules
 const imgRules = {
-  type: 'asset',
+  use: {
+    loader: 'url-loader',
+    options: {
+      limit: 90000,
+    },
+  },
   test: /\.(png|svg|jpg|jpeg|gif)$/i,
 };
 
