@@ -3,3 +3,9 @@ node_modules/
 
 # lock.json
 package-lock.json
+
+# coverage
+coverage
+
+# dist
+dist
