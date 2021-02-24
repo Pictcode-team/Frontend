@@ -185,7 +185,7 @@ module.exports = {
     "padded-blocks": 0,
     "prefer-const": 2,
     "quote-props": 0,
-    quotes: [2, "single", "avoid-escape"],
+    quotes: [2, "double", "avoid-escape"],
     radix: 2,
     "jsx-quotes": [2, "prefer-double"],
     "jsx-a11y/click-events-have-key-events": 0,
