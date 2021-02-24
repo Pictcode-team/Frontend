@@ -7,7 +7,7 @@ const common = require('./webpack.common');
  */
 const prodConfig = {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   optimization: {
     splitChunks: {
       chunks: 'all',

@@ -1,20 +1,20 @@
 declare module '*.jpg' {
-  const content: any;
-  export default content;
+  const value: any;
+  export = value;
 }
 declare module '*.png' {
-  const content: any;
-  export default content;
+  const value: any;
+  export = value;
 }
 declare module '*.svg' {
-  const content: any;
-  export default content;
+  const value: any;
+  export = value;
 }
 declare module '*.jpeg' {
-  const content: any;
-  export default content;
+  const value: any;
+  export = value;
 }
 declare module '*.gif' {
-  const content: any;
-  export default content;
+  const value: any;
+  export = value;
 }

@@ -29,16 +29,16 @@ const tsRules = {
  */
 module.exports = {
   entry: './src/index.tsx',
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'bundle.[contentHash].js',
-    publicPath: '',
-  },
   module: {
     rules: [babelRules, tsRules, imgRules],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
+  },
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'bundle.[contentHash].js',
+    publicPath: '',
   },
   plugins: [
     new CleanWebpackPlugin(),

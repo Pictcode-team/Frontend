@@ -16,7 +16,7 @@ const devConfig = {
     hot: true,
   },
   target: 'web',
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
