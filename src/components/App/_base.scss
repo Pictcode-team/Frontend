@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins.ttf.woff') format('woff'),
+    url('./font/Poppins.ttf.svg#Poppins') format('svg'),
+    url('./font/Poppins.ttf.eot'),
+    url('./font/Poppins.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$primary-color: #05362f;
+$transparency: rgba(255, 255, 255, 0.1);
+$over-image: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.2) 0%,
+  rgba(0, 0, 0, 0.35) 100%
+);
+
+$fs-small: 12;
+$fs-regular: 18;
+$fs-big: 24;
+$fs-huge: 36;
+
+$space-xs: 5;
+$space-small: 15;
+$space-regular: 30;
+$space-big: 40;
+$space-xl: 60;
+$space-huge: 100;
+
+//Font Size in Rem
+
+$base-size: 16;
+
+//Function to convert px value into rem
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}
+
+body {
+  font-family: 'Poppins';
+}
+
+.flex-y {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-x {
+  display: flex;
+  align-items: center;
+}

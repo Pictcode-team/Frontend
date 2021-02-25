@@ -1,13 +1,18 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {Home} from './Home'
+import {Layout} from './Layout'
 
-import "./styles.scss";
-import logo from './../../assets/React.png';
+import "./global.scss";
 
 export default function App() {
   return (
-    <div className="app">
-      <h1>Hola, Bienvenido a transfer!!!</h1>
-      <img src={logo} alt="react logo"/>
-    </div>
+    <BrowserRouter>
+      <Layout>
+      <Switch>
+          <Route exact path="/" component={Home}/>
+      </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
