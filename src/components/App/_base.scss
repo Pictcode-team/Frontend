@@ -1,12 +1,14 @@
-@font-face {
-  font-family: 'Poppins';
-  src: url('Poppins.ttf.woff') format('woff'),
-    url('./font/Poppins.ttf.svg#Poppins') format('svg'),
-    url('./font/Poppins.ttf.eot'),
-    url('./font/Poppins.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'Poppins';
+//   src: url('Poppins.ttf.woff') format('woff'),
+//     url('./font/Poppins.ttf.svg#Poppins') format('svg'),
+//     url('./font/Poppins.ttf.eot'),
+//     url('./font/Poppins.eot?#iefix') format('embedded-opentype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 $primary-color: #05362f;
 $transparency: rgba(255, 255, 255, 0.1);
@@ -39,6 +41,7 @@ $base-size: 16;
 
 body {
   font-family: 'Poppins';
+  margin: 0;
 }
 
 .flex-y {

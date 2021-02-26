@@ -11,7 +11,12 @@ const imgRules = {
       limit: 90000,
     },
   },
-  test: /\.(png|svg|jpg|jpeg|gif)$/i,
+  test: /\.(png|jpg|jpeg|gif)$/i,
+};
+
+const svgRules = {
+  test: /\.svg$/,
+  loader: 'svg-inline-loader',
 };
 
 //babel rules
@@ -35,10 +40,13 @@ const tsRules = {
 module.exports = {
   entry: './src/index.tsx',
   module: {
-    rules: [babelRules, tsRules, imgRules],
+    rules: [babelRules, tsRules, imgRules, svgRules],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: {
+      images: path.resolve(__dirname, '../src/assets/img/'),
+    },
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

@@ -1,6 +1,6 @@
 @import '_base.scss';
 
-body {
+.container {
   background-size: cover;
   overflow: visible;
   object-fit: cover;
@@ -8,22 +8,23 @@ body {
 }
 
 .background-1 {
-  background-image: url(./img/background1.jpg);
+  background-image: url(images/background1.jpg);
+  z-index: -2;
 }
 
 .background-2 {
-  background-image: url(./img/background2.jpg);
+  background-image: url(../../assets/img/background2.jpg);
 }
 
 .background-3 {
-  background-image: url(./img/background3.jpg);
+  background-image: url(../../assets/img/background3.jpg);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   height: 5vh;
-  margin: size($space-regular);
+  padding: size($space-regular);
 
   a {
     text-decoration: none;
@@ -44,19 +45,20 @@ body {
     position: relative;
 
     &::before {
-      content: url(./img/cloud.svg);
+      content: url(images/cloud.png);
       height: size(60);
       background-color: $transparency;
       position: absolute;
       bottom: 0;
       border: black 1px dashed;
-      z-index: -1;
+      z-index: 1;
       padding: 40%;
     }
   }
 
   &__files {
     position: relative;
+    z-index: 2;
     &::-webkit-file-upload-button {
       visibility: hidden;
       height: size($space-xl);
