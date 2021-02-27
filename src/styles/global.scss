@@ -8,16 +8,16 @@
 }
 
 .background-1 {
-  background-image: url(images/background1.jpg);
+  background-image: url(../assets/img/background1.jpg);
   z-index: -2;
 }
 
 .background-2 {
-  background-image: url(../../assets/img/background2.jpg);
+  background-image: url(../assets/img/background2.jpg);
 }
 
 .background-3 {
-  background-image: url(../../assets/img/background3.jpg);
+  background-image: url(../assets/img/background3.jpg);
 }
 
 .header {
@@ -45,7 +45,7 @@
     position: relative;
 
     &::before {
-      content: url(images/cloud.png);
+      content: url(../assets/img/cloud.png);
       height: size(60);
       background-color: $transparency;
       position: absolute;

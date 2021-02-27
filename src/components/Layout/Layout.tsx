@@ -4,7 +4,7 @@ import NotionLogo from 'images/notion.png';
 import GithubLogo from 'images/github1.png';
 
 
-export const Layout = (props:any) => {
+export const Layout = (props: any) => {
 
   return (
     <div className='container background-1'>
