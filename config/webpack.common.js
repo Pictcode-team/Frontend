@@ -5,18 +5,8 @@ const path = require('path');
 
 //images rules
 const imgRules = {
-  use: {
-    loader: 'url-loader',
-    options: {
-      limit: 90000,
-    },
-  },
-  test: /\.(png|jpg|jpeg|gif)$/i,
-};
-
-const svgRules = {
-  test: /\.svg$/,
-  loader: 'svg-inline-loader',
+  type: 'asset',
+  test: /\.(png|jpg|jpeg|gif|svg)$/,
 };
 
 //babel rules
@@ -40,7 +30,7 @@ const tsRules = {
 module.exports = {
   entry: './src/index.tsx',
   module: {
-    rules: [babelRules, tsRules, imgRules, svgRules],
+    rules: [babelRules, tsRules, imgRules],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
@@ -56,7 +46,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
-      title: 'QR Code Transfer',
+      title: 'Pictcode',
       template: './public/index.html',
     }),
   ],

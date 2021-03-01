@@ -10,7 +10,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+//Fonts
+$principal-font: Poppins;
+
 $primary-color: #05362f;
+$secondary-color: #d8fffb;
+$dark-color: #000000;
+$light-color: #ffffff;
 $transparency: rgba(255, 255, 255, 0.1);
 $over-image: linear-gradient(
   180deg,
@@ -42,6 +48,7 @@ $base-size: 16;
 body {
   font-family: 'Poppins';
   margin: 0;
+  padding: 0;
 }
 
 .flex-y {
