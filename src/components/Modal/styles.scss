@@ -2,6 +2,7 @@
 
 .modal {
   position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
   bottom: 0;
@@ -17,7 +18,12 @@
     top: 10rem;
     background-color: #ffffff;
     padding: 1rem;
-    width: 400px;
+    width: 45%;
+    height: 60%;
+  }
+
+  &__gallery {
+    height: auto;
   }
 
   &__close {
