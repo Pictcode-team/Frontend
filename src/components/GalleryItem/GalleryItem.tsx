@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './styles.scss'
 
-export const ModalItem = ({ImageUrl}: any) => {
+export const GalleryItem = ({ImageUrl}: any) => {
   return (
-    <div className="modalItem">
+    <div className="galleryItem">
       <img src={ImageUrl} alt="" height='100px'/>
     </div>
   )

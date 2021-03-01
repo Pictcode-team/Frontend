@@ -17,7 +17,8 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false
+    "noEmit": false,
+    "noImplicitAny": false
   },
   "include": ["./src/**/*"],
   "exclude": ["dist", "build", "node_modules"]

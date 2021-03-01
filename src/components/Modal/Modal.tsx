@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModalItem } from '../ModalItem/ModalItem'
+import { GalleryItem } from '../GalleryItem/GalleryItem'
 import './styles.scss'
-import image1 from '../../assets/img/background1.jpg'
-import image2 from '../../assets/img/background2.jpg'
-import image3 from '../../assets/img/background3.jpg'
+import folder from '../../assets/img/folder.svg'
+import plus from '../../assets/img/plus.svg'
+import logo from '../../assets/img/logo-pictcode.png'
 
 export const Modal = (props: any) => {
   const portalDiv = document.getElementById("modal")
   portalDiv ? ReactDOM.createPortal : null;
 
   const imagesurls: string[] = [
-    image1,
-    image2,
-    image3,
     'https://www.gettyimages.es/gi-resources/images/frontdoor/editorial/Velo/GettyImages-Velo-1088643550.jpg',
     'https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg',
     'https://cdn.eso.org/images/thumb300y/eso1907a.jpg',
@@ -32,13 +29,31 @@ export const Modal = (props: any) => {
   }
   return portalDiv ? ReactDOM.createPortal(
     <div className="modal">
-      <div className="modal__container">
-        <button onClick={props.onClose} className="modal__close">X</button>
-        <div className="modal__gallery">
+      <div className="modal_container">
+        <header className="modal_header">
+          <div className="modal_header__left">
+            <input type="text" name="gallery name" placeholder='Your Folder Name' id="" className="modal_header__left--name"/>
+            <img src={folder} alt="" className="modal_header__left--folder"/>
+          </div>
+          <div className="modal_header__right">
+            <div className="modal_header__right--add">
+              <span>Add</span>
+              <button className="modal_header__right--plus">
+                <img src={plus} alt=""/>
+              </button>
+            </div>
+            <button onClick={props.onClose} className="modal_header__right--close">X</button>
+          </div>
+        </header>
+        <div className="modal_gallery">
           {imagesurls.map((item, index) =>
-            <ModalItem key={index} ImageUrl={item}/>
+            <GalleryItem key={index} ImageUrl={item}/>
           )}
         </div>
+        <button className="modal_footer">
+          <span>Get your</span>
+          <img src={logo} alt=""/>
+        </button>
       </div>
     </div>
     , portalDiv) : null;
