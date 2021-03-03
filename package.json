@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Transfer-team/QRCodeTransfer#readme",
   "dependencies": {
     "core-js": "^3.9.0",
+    "qrcode.react": "^1.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
