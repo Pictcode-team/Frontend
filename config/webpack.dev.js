@@ -23,19 +23,6 @@ const devConfig = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
         test: /\.(css|sass|scss)$/,
       },
-      // esta configuracion es para poder renderizar svg, pero webpack 5 ya lo hace con el type asset
-      // {
-      //   test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '[name].[ext]',
-      //         outputPath: 'fonts/',
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   },
   plugins: [new HotModuleReplacementPlugin(), new ReactRefreshModulePlugin()],
