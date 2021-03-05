@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { GalleryItem } from '../GalleryItem/GalleryItem'
+import { GalleryItem } from '../GalleryItem/index'
 import './styles.scss'
 import folder from '../../assets/img/folder.svg'
 import plus from '../../assets/img/plus.svg'
 import logo from '../../assets/img/logo-pictcode.png'
 
-export const Modal = (props: any) => {
+export const WorkspaceModal = (props: any) => {
   const portalDiv = document.getElementById("modal")
   portalDiv ? ReactDOM.createPortal : null;
 
@@ -28,7 +28,7 @@ export const Modal = (props: any) => {
     return null;
   }
   return portalDiv ? ReactDOM.createPortal(
-    <div className="modal">
+    <div className="modal QRGenerated">
       <div className="modal_container">
         <header className="modal_header">
           <div className="modal_header__left">

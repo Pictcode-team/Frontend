@@ -1,1 +1,11 @@
-import '../../styles/base'
+@import '../../styles/base';
+
+.qrModal {
+  display: relative;
+  z-index: 21;
+  grid-template-rows: 10% 80% 10%;
+  background-color: #ffffff;
+  padding: 2rem;
+  width: 20%;
+  height: 40%;
+}

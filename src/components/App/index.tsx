@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import {Home} from '../Home/Home'
-import {Layout} from '../Layout/Layout'
+import {Home} from '../Home/index'
+import {Layout} from '../Layout/index'
 
 import "../../styles/global.scss";
 
