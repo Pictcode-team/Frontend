@@ -5,7 +5,7 @@ import './styles.scss';
 
 export const QRModal = (props : any) => {
   return (
-    <div className="qrModal">
+    <div className="qrModal fadeIn">
       <h3 className='qrModal_title'>Share with this:</h3>
       <QRCode
         className="qrModal_code"

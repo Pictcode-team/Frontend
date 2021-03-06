@@ -1,23 +1,19 @@
 @import '../../styles/base';
 
-.qrModal {
-  position: relative;
-  z-index: 19;
-  background-color: #ffffff;
-  padding: 2rem;
-  // padding-left: 0;
-  width: 18%;
-  height: 60%;
-  border-radius: 0.5rem;
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  &_code {
-    margin-top: 10%;
-    margin-bottom: 20%;
-  }
+  justify-content: space-evenly;
 }
 
 .fadeIn {
@@ -49,9 +45,11 @@
 
 // @keyframes appear {
 //   from {
-//     margin-left: -200px;
+//     justify-content: center;
+//     tranform: translateX(-100%);
 //   }
 //   to {
-//     margin-left: 0;
+//     justify-content: space-evenly;
+//     tranform: translateX(0);
 //   }
 // }
