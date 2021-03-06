@@ -1,28 +1,16 @@
 @import '../../styles/base';
 
-.modal {
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &_container {
-    display: grid;
-    grid-template-rows: 10% 80% 10%;
-    position: relative;
-    top: 10rem;
-    background-color: #ffffff;
-    padding: 2rem;
-    width: 45%;
-    height: 60%;
-  }
+.workspace {
+  display: grid;
+  grid-template-rows: 10% 80% 10%;
+  position: relative;
+  background-color: #ffffff;
+  padding: 2rem;
+  width: 45%;
+  height: 60%;
+  // border-top-left-radius: 0.5rem;
+  // border-bottom-left-radius: 0.5rem;
+  border-radius: 0.5rem;
 
   &_close {
     position: absolute;
@@ -112,7 +100,7 @@
     margin: 0.5rem;
     padding: 1rem 0.5rem;
     border: 1px solid $dark-color;
-    border-radius: 0.2rem;
+    border-radius: 0.5rem;
     background: none;
     cursor: pointer;
     span {
