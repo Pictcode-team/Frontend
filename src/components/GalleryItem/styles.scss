@@ -5,6 +5,7 @@
   flex-grow: 1;
   margin: 0 0 0.5rem 0.5rem;
   cursor: pointer;
+  position: relative;
   &:active {
     border: 2px solid #00b1a1;
   }
@@ -17,7 +18,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    position: relative;
+    position: absolute;
+    top: 0;
     height: 100%;
     width: 100%;
     &-item {
@@ -27,7 +29,6 @@
       height: 2.5rem;
       width: 2.5rem;
       margin: 2%;
-      margin-bottom: 5%;
       background-color: $light-color;
       border-radius: 50%;
       img {
