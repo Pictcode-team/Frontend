@@ -7,23 +7,6 @@ import './styles.scss'
 export const Home = () => {
   const {  upload, showModal, handleCloseModal, generatedQR,  handleOpenQRModal  }: any = useUpload()
 
-  // const [showModal, setShowModal] = useState(false)
-  // const [openModal, setOpenModal] = useState(false)
-  // const [generatedQR, setGeneratedQR] = useState(false)
-
-  // const handleOpenModal = (e:any) => {
-  //   setShowModal(true);
-  //   setOpenModal(true);
-  // }
-  // const handleCloseModal = (e:any) => {
-  //   setShowModal(false);
-  //   setOpenModal(false);
-  //   setGeneratedQR(false);
-  // }
-  // const handleOpenQRModal = (e:any) => {
-  //   setGeneratedQR(true)
-  // }
-
   return (
     <section className="upload">
       <div className="upload__form">

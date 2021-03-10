@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import ReactDOM from 'react-dom';
 import { useUpload } from '../../UploadContext/'
 import { GalleryItem } from '../GalleryItem/index'
@@ -8,8 +8,11 @@ import plus from '../../assets/img/plus.svg'
 import logo from '../../assets/img/logo-pictcode.png'
 
 export const WorkspaceModal = (props : any) => {
-  const { selectedFiles } : any = useUpload()
-  
+  const { selectedFiles } : any = useUpload();
+
+  useEffect(() => {
+  }, [selectedFiles])
+
   return (
     <div className="workspace">
       <header className="workspace_header">
