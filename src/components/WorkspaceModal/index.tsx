@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
-// import ReactDOM from 'react-dom';
-import { useUpload } from '../../UploadContext/'
-import { GalleryItem } from '../GalleryItem/index'
-import './styles.scss'
+import React from 'react';
+
+import { GalleryItem } from '../GalleryItem/index';
+
 import folder from '../../assets/img/folder.svg'
 import plus from '../../assets/img/plus.svg'
 import logo from '../../assets/img/logo-pictcode.png'
+import './styles.scss'
 
 export const WorkspaceModal = (props : any) => {
-  const { selectedFiles } : any = useUpload();
-
-  useEffect(() => {
-  }, [selectedFiles])
 
   return (
     <div className="workspace">
@@ -31,9 +27,7 @@ export const WorkspaceModal = (props : any) => {
         </div>
       </header>
       <div className="workspace_gallery">
-        {selectedFiles.map((item, index) =>
-          <GalleryItem key={index} ImageUrl={item}/>
-        )}
+        {props.files.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>)}
       </div>
       <button className="workspace_footer" onClick={e => props.handleEvent(true)}>
         <span>Get your</span>
