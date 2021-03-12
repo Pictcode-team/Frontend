@@ -6,10 +6,9 @@
   position: relative;
   background-color: #ffffff;
   padding: 2rem;
+  padding-left: 2.5rem;
   width: 45%;
   height: 60%;
-  // border-top-left-radius: 0.5rem;
-  // border-bottom-left-radius: 0.5rem;
   border-radius: 0.5rem;
 
   &_close {
@@ -114,7 +113,10 @@
   &_gallery {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     justify-self: center;
+    width: 98%;
     padding: 2%;
     border-radius: 0.3rem;
     overflow-y: scroll;

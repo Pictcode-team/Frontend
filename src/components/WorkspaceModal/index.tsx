@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { GalleryItem } from '../GalleryItem/index';
 
@@ -8,6 +8,17 @@ import logo from '../../assets/img/logo-pictcode.png'
 import './styles.scss'
 
 export const WorkspaceModal = (props : any) => {
+
+  const [showImages, setShowImages] = useState(false)
+
+  const {files} = props
+
+  useEffect(() => {
+    setShowImages(bool => bool = false)
+    setTimeout(() => {
+    setShowImages(bool => bool = true)
+    }, 1000)
+  },[files])
 
   return (
     <div className="workspace">
@@ -27,7 +38,9 @@ export const WorkspaceModal = (props : any) => {
         </div>
       </header>
       <div className="workspace_gallery">
-        {props.files.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>)}
+        { showImages ? (
+          props.files?.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>)) : <h1 className="workspace_loading">LOADING</h1>
+        }
       </div>
       <button className="workspace_footer" onClick={e => props.handleEvent(true)}>
         <span>Get your</span>

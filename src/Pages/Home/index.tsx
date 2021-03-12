@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUpload } from '../../UploadContext'
 import { WorkspaceModal } from '../../components/WorkspaceModal/index';
 import { QRModal } from '../../components/QRModal';
@@ -7,10 +7,10 @@ import './styles.scss'
 export const Home = () => {
   const { setSelectedFiles, selectedFiles, showModal, handleCloseModal, generatedQR,  handleOpenQRModal, setShowModal, setOpenModal }: any = useUpload();
 
-  const [images, setImages] = useState<any>([])
+  const [images, setImages] = useState<any>([]);
 
   const readAll = async (files, output) => {
-    for await (let num of files) {
+    for (let num of files) {
       const reader: any = new FileReader();
       reader.readAsDataURL(num);
       reader.onload = () => {
@@ -19,9 +19,9 @@ export const Home = () => {
     }
   }
 
-  const upload = async (event:any) => {
+  const upload = (e:any) => {
     const output: string[] = [];
-    const files = event.target.files;
+    const files = e.target.files;
     readAll(files, output)
       .then(() => {
         setImages(output)
@@ -29,7 +29,7 @@ export const Home = () => {
       })
   }
 
-  const handleUpload = async (e) => {
+  const handleUpload = async (e:any) => {
     await upload(e);
     await setShowModal(true);
     await setOpenModal(true);
@@ -47,7 +47,6 @@ export const Home = () => {
         />
         { showModal &&
           <div className="modal fadeIn" >
-            
             <WorkspaceModal
               isOpen={handleUpload}
               onClose={handleCloseModal}
@@ -62,7 +61,6 @@ export const Home = () => {
             )}
           </div>
         }
-        {/* <button onClick={e => handleOpenModal(true)}>abrir modal</button> */}
       </div>
       <p>Only jpg, png, gif, svg</p>
     </section>
