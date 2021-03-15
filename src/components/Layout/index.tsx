@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Logo from 'images/logo-pictcode.png';
 import NotionLogo from 'images/notion.png';
 import GithubLogo from 'images/github1.png';
-
 
 export const Layout = (props: any) => {
 
@@ -11,7 +12,9 @@ export const Layout = (props: any) => {
       <header className="header">
         <img src={Logo} alt="logo-pictcode" />
         <nav className="nav__menu">
-          <a>About</a>
+          <Link to="/About">
+            <a>About</a>
+          </Link>
         </nav>
       </header>
       {props.children}
