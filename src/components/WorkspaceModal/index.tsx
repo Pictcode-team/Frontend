@@ -9,9 +9,9 @@ import './styles.scss'
 
 export const WorkspaceModal = (props : any) => {
 
-  const [showImages, setShowImages] = useState(false)
+  const [showImages, setShowImages] = useState(false);
 
-  const {files} = props
+  const {files} = props;
 
   useEffect(() => {
     setShowImages(bool => bool = false)
