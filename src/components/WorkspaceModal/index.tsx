@@ -39,7 +39,8 @@ export const WorkspaceModal = (props : any) => {
       </header>
       <div className="workspace_gallery">
         { showImages ? (
-          props.files?.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>)) : <h1 className="workspace_loading">LOADING</h1>
+          props.files?.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>))
+          : <h1 className="workspace_loading">LOADING</h1>
         }
       </div>
       <button className="workspace_footer" onClick={e => props.handleEvent(true)}>

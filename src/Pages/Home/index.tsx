@@ -25,7 +25,7 @@ export const Home = () => {
     readAll(files, output)
       .then(() => {
         setImages(output)
-        setSelectedFiles(images)
+        // setSelectedFiles(images)
       })
   }
 
