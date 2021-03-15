@@ -9,17 +9,6 @@ import './styles.scss'
 
 export const WorkspaceModal = (props : any) => {
 
-  const [showImages, setShowImages] = useState(false);
-
-  const {files} = props;
-
-  useEffect(() => {
-    setShowImages(bool => bool = false)
-    setTimeout(() => {
-    setShowImages(bool => bool = true)
-    }, 1000)
-  },[files])
-
   return (
     <div className="workspace">
       <header className="workspace_header">
@@ -38,7 +27,7 @@ export const WorkspaceModal = (props : any) => {
         </div>
       </header>
       <div className="workspace_gallery">
-        { showImages ? (
+        { !!props.files.length ? (
           props.files?.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>))
           : <h1 className="workspace_loading">LOADING</h1>
         }

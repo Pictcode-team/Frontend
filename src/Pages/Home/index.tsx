@@ -3,36 +3,41 @@ import { useUpload } from '../../UploadContext'
 import { WorkspaceModal } from '../../components/WorkspaceModal/index';
 import { QRModal } from '../../components/QRModal';
 import './styles.scss'
+import { resolvePreset } from '@babel/core';
 
 export const Home = () => {
-  const { setSelectedFiles, selectedFiles, showModal, handleCloseModal, generatedQR,  handleOpenQRModal, setShowModal, setOpenModal }: any = useUpload();
-
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [generatedQR, setGeneratedQR] = useState<boolean>(false);
   const [images, setImages] = useState<any>([]);
 
-  const readAll = async (files, output) => {
-    for (let num of files) {
+  const readAll = (files) => {
+    return [...files].map(file => new Promise((resolve, reject) => {
       const reader: any = new FileReader();
-      reader.readAsDataURL(num);
-      reader.onload = () => {
-        output.push(reader.result)
-      }
-    }
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result)
+    }))
   }
 
   const upload = (e:any) => {
-    const output: string[] = [];
     const files = e.target.files;
-    readAll(files, output)
-      .then(() => {
-        setImages(output)
-        // setSelectedFiles(images)
-      })
+    return Promise.all(readAll(files))
+      .then((images) => setImages(images))
   }
 
   const handleUpload = async (e:any) => {
-    await upload(e);
     await setShowModal(true);
-    await setOpenModal(true);
+    await upload(e);
+  }
+
+  const handleCloseModal = (e:boolean) => {
+    setShowModal(false);
+    setGeneratedQR(false);
+    // console.log(images);
+    // setImages(images.splice(0, images.length))
+    // console.log(images);
+  }
+  const handleOpenQRModal = (e:boolean) => {
+    setGeneratedQR(true)
   }
 
   return (
