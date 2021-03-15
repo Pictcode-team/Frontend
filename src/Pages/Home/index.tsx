@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useUpload } from '../../UploadContext'
+import { resolvePreset } from '@babel/core';
 import { WorkspaceModal } from '../../components/WorkspaceModal/index';
 import { QRModal } from '../../components/QRModal';
-import './styles.scss'
-import { resolvePreset } from '@babel/core';
+import './styles.scss';
 
 export const Home = () => {
   const [showModal, setShowModal] = useState<boolean>(false);

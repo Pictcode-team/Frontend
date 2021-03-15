@@ -8,7 +8,6 @@ import logo from '../../assets/img/logo-pictcode.png'
 import './styles.scss'
 
 export const WorkspaceModal = (props : any) => {
-
   return (
     <div className="workspace">
       <header className="workspace_header">
