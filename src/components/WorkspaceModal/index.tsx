@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { GalleryItem } from '../GalleryItem/index';
+import { Loader } from '../Loader/index';
 
 import folder from '../../assets/img/folder.svg'
 import plus from '../../assets/img/plus.svg'
@@ -28,7 +29,7 @@ export const WorkspaceModal = (props : any) => {
       <div className="workspace_gallery">
         { !!props.files.length ? (
           props.files?.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>))
-          : <h1 className="workspace_loading">LOADING</h1>
+          : <Loader/>
         }
       </div>
       <button className="workspace_footer" onClick={e => props.handleEvent(true)}>
