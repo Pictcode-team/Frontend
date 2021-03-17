@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import trash from '../../assets/img/delete.svg';
 import eye from '../../assets/img/view.svg';
 import './styles.scss'
 
-export const GalleryItem = ({ImageUrl}: any) => {
+const GalleryItem = ({ImageUrl}: any) => {
   return (
     <div className="galleryItem">
       <img src={ImageUrl} alt="" height='100px'/>
@@ -18,3 +18,5 @@ export const GalleryItem = ({ImageUrl}: any) => {
     </div>
   )
 }
+
+export default GalleryItem;

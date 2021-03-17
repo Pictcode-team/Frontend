@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { resolvePreset } from '@babel/core';
-import { WorkspaceModal } from '../../components/WorkspaceModal/index';
-import { QRModal } from '../../components/QRModal';
+import React, { useState } from 'react';
+import WorkspaceModal from '../../components/WorkspaceModal/index';
+import QRModal from '../../components/QRModal';
 import './styles.scss';
 
-export const Home = () => {
+const Home = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [generatedQR, setGeneratedQR] = useState<boolean>(false);
   const [images, setImages] = useState<any>([]);
@@ -70,3 +69,5 @@ export const Home = () => {
     </section>
   )
 }
+
+export default Home;

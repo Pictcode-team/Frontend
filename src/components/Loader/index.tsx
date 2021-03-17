@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-export const Loader = () => {
+const Loader = () => {
   return (
     <div className="loader-container">
       <div className="loader1"></div>
@@ -9,3 +9,5 @@ export const Loader = () => {
     </div>
   )
 }
+
+export default Loader;

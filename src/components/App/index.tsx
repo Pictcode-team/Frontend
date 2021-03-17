@@ -1,28 +1,31 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import {Home} from '../../Pages/Home/index';
-import {About} from '../../Pages/About/index';
-import {Layout} from '../Layout/index';
-import { Unavailable } from "../../Pages/Unavailable";
+
+import Layout from '../Layout/index';
+import Home from '../../Pages/Home/index';
+import About from '../../Pages/About/index';
+import Error from "../../Pages/Error/index";
 
 import "../../styles/global.scss";
 
-export default function App() {
+const App = () => {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <Layout>
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <Home/>
           </Route>
-          <Route exact path="/About">
+          <Route path="/About">
             <About/>
           </Route>
-          <Route>
-            <Unavailable/>
+          <Route path="*">
+            <Error/>
           </Route>
         </Switch>
       </Layout>
     </BrowserRouter>
   );
 }
+
+export default App;

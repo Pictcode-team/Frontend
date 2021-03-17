@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
-import { GalleryItem } from '../GalleryItem/index';
-import { Loader } from '../Loader/index';
+import GalleryItem from '../GalleryItem/index';
+import Loader from '../Loader/index';
 
 import folder from '../../assets/img/folder.svg'
 import plus from '../../assets/img/plus.svg'
 import logo from '../../assets/img/logo-pictcode.png'
 import './styles.scss'
 
-export const WorkspaceModal = (props : any) => {
+const WorkspaceModal = (props : any) => {
   return (
     <div className="workspace">
       <header className="workspace_header">
@@ -39,3 +39,5 @@ export const WorkspaceModal = (props : any) => {
     </div>
   )
 }
+
+export default WorkspaceModal;

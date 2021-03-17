@@ -5,7 +5,7 @@ import Logo from 'images/logo-pictcode.png';
 import NotionLogo from 'images/notion.png';
 import GithubLogo from 'images/github1.png';
 
-export const Layout = (props: any) => {
+const Layout = (props: any) => {
 
   return (
     <div className='container background-1'>
@@ -28,3 +28,5 @@ export const Layout = (props: any) => {
     </div>
   )
 }
+
+export default Layout;
