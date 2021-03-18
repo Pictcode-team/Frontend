@@ -1,11 +1,12 @@
-export {}
 import React from 'react';
 import './styles.scss';
 
 const About = () => {
   return (
-    <div>
-      <h1>hola</h1>
+    <div className="about-container">
+      <div className="about--text">
+        <h2>Learn what our app is for and how you can use it</h2>
+      </div>
     </div>
   )
 }

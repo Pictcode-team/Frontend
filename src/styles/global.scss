@@ -88,7 +88,14 @@
 
 .footer {
   @extend .flex-y;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 1rem;
   height: 10vh;
+  width: 100%;
 
   &__social {
     @extend .flex-x;
