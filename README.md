@@ -47,7 +47,7 @@ Pictcode is a nice and simple app that let's us share images between two devices
 --- 
 ### Components
 - App
-- Home
+- Loader
 - Modal
 - QRModal
 - Layout
@@ -55,7 +55,9 @@ Pictcode is a nice and simple app that let's us share images between two devices
 
 
 ### Pages
-This is a single page application (SPA).
+- Home
+- Error
+- About
 
 ## Deploy 
 
