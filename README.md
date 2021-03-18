@@ -3,7 +3,7 @@
 Pictcode is a project from SWAT Neo by Platzi Master.
 
 ## General description
-Pictcode is a nice and simple app that let's us share images between two devices via scanning a QR code. You can share from any device a receive the images from any smartphone.
+Pictcode is a nice and simple app that let's us share images between two devices via scanning a QR code. You can share from any computer and receive the images from any smartphone.
 
 ---
 #### Folder strcture :construction: 
