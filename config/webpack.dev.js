@@ -11,7 +11,7 @@ const devConfig = {
   mode: 'development',
   devServer: {
     port: 3000,
-    // historyApiFallback: true,
+    historyApiFallback: true,
     contentBase: '../dist',
     open: 'brave' || 'chrome',
     hot: true,
