@@ -30,7 +30,7 @@ const Home = () => {
   const handleCloseModal = (e:boolean) => {
     setShowModal(false);
     setGeneratedQR(false);
-    setImages(images.splice(0, images.length))
+    setImages([])
   }
   const handleOpenQRModal = (e:boolean) => {
     setGeneratedQR(true)
