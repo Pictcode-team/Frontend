@@ -1,14 +1,5 @@
 @import '../../styles/global';
 
-.container {
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  overflow: visible;
-  object-fit: cover;
-  margin: 0;
-}
-
 .background-1 {
   background-image: url(../../assets/img/background1.jpg);
   z-index: -2;
@@ -20,6 +11,15 @@
 
 .background-3 {
   background-image: url(../../assets/img/background3.jpg);
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  overflow: visible;
+  object-fit: cover;
+  margin: 0;
 }
 
 .header {
@@ -53,11 +53,40 @@
 
   &__social {
     @extend .flex-x;
+    text-align: center;
     align-items: center;
     justify-content: center;
     a {
       margin: 0.5rem;
       margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    img {
+      min-width: 178.75px;
+      width: 80%;
+    }
+  }
+
+  .footer {
+    &__social {
+      a {
+        margin: 0rem;
+        margin-bottom: -1rem;
+        img {
+          width: 70%;
+        }
+      }
+    }
+    p {
+      text-align: center;
+      font-size: 0.9rem;
     }
   }
 }
