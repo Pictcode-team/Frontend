@@ -2,6 +2,8 @@
 
 .upload {
   @extend .flex-y;
+  margin: 0 auto;
+  margin-top: size($space-big);
   height: 75vh;
 
   &__form {
@@ -9,7 +11,7 @@
 
     &::before {
       content: url(../../assets/img/cloud.png);
-      height: size(50);
+      height: size(60);
       background-color: $transparency;
       position: absolute;
       bottom: 0;
@@ -38,6 +40,7 @@
       left: 0;
       right: 0;
       top: -75%;
+      cursor: pointer;
     }
   }
 
@@ -80,11 +83,7 @@
     opacity: 1;
   }
 }
-@media screen and (max-width: 425px) {
-  .upload {
-    margin-top: size($space-huge);
-  }
-}
+
 @media screen and (max-width: 768px) {
   .upload {
     margin-top: size($space-big);
@@ -98,5 +97,11 @@
     p {
       font-size: 0.9rem;
     }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .upload {
+    margin-top: size($space-huge);
   }
 }
