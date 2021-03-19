@@ -21,6 +21,6 @@ export const UploadFilesService = (file, onUploadProgress) => {
     });
   }
 
- export const getFiles = () => {
+export const getFiles = () => {
     return http.get("/files");
   }
