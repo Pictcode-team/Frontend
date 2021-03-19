@@ -1,0 +1,57 @@
+@import '../../styles/base';
+
+.qrModal {
+  position: relative;
+  z-index: 19;
+  background-color: #ffffff;
+  padding: 2rem;
+  // padding-left: 0;
+  width: 18%;
+  height: 60%;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &_code {
+    margin-top: 10%;
+    margin-bottom: 20%;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// .appear {
+//   -webkit-animation-duration: 2s;
+//   animation-duration: 2s;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+//   -webkit-animation-name: appear;
+//   animation-name: appear;
+// }
+
+// @keyframes appear {
+//   from {
+//     margin-left: -200px;
+//   }
+//   to {
+//     margin-left: 0;
+//   }
+// }

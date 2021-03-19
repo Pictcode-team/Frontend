@@ -1,0 +1,15 @@
+@import '../../styles/base';
+
+.about {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  color: $primary-color;
+  &--text {
+    width: 50%;
+    text-align: justify;
+    &-1 {
+      margin-bottom: 3rem;
+    }
+  }
+}

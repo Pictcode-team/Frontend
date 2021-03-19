@@ -1,0 +1,55 @@
+@import '../../styles/base';
+
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.fadeIn {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// .appear {
+//   -webkit-animation-duration: 2s;
+//   animation-duration: 2s;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+//   -webkit-animation-name: appear;
+//   animation-name: appear;
+// }
+
+// @keyframes appear {
+//   from {
+//     justify-content: center;
+//     tranform: translateX(-100%);
+//   }
+//   to {
+//     justify-content: space-evenly;
+//     tranform: translateX(0);
+//   }
+// }
