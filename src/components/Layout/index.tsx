@@ -5,6 +5,8 @@ import Logo from 'images/logo-pictcode.png';
 import NotionLogo from 'images/notion.png';
 import GithubLogo from 'images/github1.png';
 
+import './styles.scss'
+
 const Layout = (props: any) => {
 
   return (

@@ -1,0 +1,63 @@
+@import '../../styles/global';
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  overflow: visible;
+  object-fit: cover;
+  margin: 0;
+}
+
+.background-1 {
+  background-image: url(../../assets/img/background1.jpg);
+  z-index: -2;
+}
+
+.background-2 {
+  background-image: url(../../assets/img/background2.jpg);
+}
+
+.background-3 {
+  background-image: url(../../assets/img/background3.jpg);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  padding: size($space-regular);
+
+  a {
+    text-decoration: none;
+    color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.footer {
+  @extend .flex-y;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 1rem;
+  height: 10vh;
+  width: 100%;
+
+  &__social {
+    @extend .flex-x;
+    align-items: center;
+    justify-content: center;
+    a {
+      margin: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+}

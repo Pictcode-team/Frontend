@@ -1,109 +1,64 @@
-@import '_base.scss';
+// @font-face {
+//   font-family: 'Poppins';
+//   src: url('Poppins.ttf.woff') format('woff'),
+//     url('./font/Poppins.ttf.svg#Poppins') format('svg'),
+//     url('./font/Poppins.ttf.eot'),
+//     url('./font/Poppins.eot?#iefix') format('embedded-opentype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
-.container {
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  overflow: visible;
-  object-fit: cover;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+//Fonts
+$principal-font: Poppins;
+
+$primary-color: #05362f;
+$secondary-color: #d8fffb;
+$dark-color: #000000;
+$light-color: #ffffff;
+$transparency: rgba(255, 255, 255, 0.1);
+$over-image: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.2) 0%,
+  rgba(0, 0, 0, 0.35) 100%
+);
+
+$fs-small: 12;
+$fs-regular: 18;
+$fs-big: 24;
+$fs-huge: 36;
+
+$space-xs: 5;
+$space-small: 15;
+$space-regular: 30;
+$space-big: 40;
+$space-xl: 60;
+$space-huge: 100;
+
+//Font Size in Rem
+
+$base-size: 16;
+
+//Function to convert px value into rem
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}
+
+body {
+  font-family: 'Poppins';
   margin: 0;
+  padding: 0;
 }
 
-.background-1 {
-  background-image: url(../assets/img/background1.jpg);
-  z-index: -2;
-}
-
-.background-2 {
-  background-image: url(../assets/img/background2.jpg);
-}
-
-.background-3 {
-  background-image: url(../assets/img/background3.jpg);
-}
-
-.header {
+.flex-y {
   display: flex;
-  justify-content: space-between;
-  height: 5vh;
-  padding: size($space-regular);
-
-  a {
-    text-decoration: none;
-    color: $primary-color;
-    cursor: pointer;
-
-    &:hover {
-      color: white;
-      transition: all 0.3s ease;
-    }
-  }
-}
-
-.upload {
-  @extend .flex-y;
-  height: 75vh;
-
-  &__form {
-    position: relative;
-
-    &::before {
-      content: url(../assets/img/cloud.png);
-      height: size(60);
-      background-color: $transparency;
-      position: absolute;
-      bottom: 0;
-      border: black 1px dashed;
-      z-index: 1;
-      padding: 40%;
-    }
-  }
-
-  &__files {
-    position: relative;
-    z-index: 2;
-    &::-webkit-file-upload-button {
-      visibility: hidden;
-      height: size($space-xl);
-    }
-    &::before {
-      content: 'Upload your files';
-      background-color: $primary-color;
-      color: white;
-      font-family: 'Poppins';
-      font-size: size($fs-regular);
-      padding: size($space-xl);
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -50px;
-    }
-  }
-
-  p {
-    margin-top: 0;
-    font-size: $fs-small;
-  }
-}
-
-.footer {
-  @extend .flex-y;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 1rem;
-  height: 10vh;
-  width: 100%;
+  justify-content: center;
+}
 
-  &__social {
-    @extend .flex-x;
-    align-items: center;
-    justify-content: center;
-    a {
-      margin: 0.5rem;
-      margin-bottom: 0;
-    }
-  }
+.flex-x {
+  display: flex;
+  align-items: center;
 }

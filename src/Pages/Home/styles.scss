@@ -1,4 +1,50 @@
-@import '../../styles/base';
+@import '../../styles/global';
+
+.upload {
+  @extend .flex-y;
+  height: 75vh;
+
+  &__form {
+    position: relative;
+
+    &::before {
+      content: url(../../assets/img/cloud.png);
+      height: size(60);
+      background-color: $transparency;
+      position: absolute;
+      bottom: 0;
+      border: black 1px dashed;
+      z-index: 1;
+      padding: 40%;
+    }
+  }
+
+  &__files {
+    position: relative;
+    z-index: 2;
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+      height: size($space-xl);
+    }
+    &::before {
+      content: 'Upload your files';
+      background-color: $primary-color;
+      color: white;
+      font-family: 'Poppins';
+      font-size: size($fs-regular);
+      padding: size($space-xl);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -50px;
+    }
+  }
+
+  p {
+    margin-top: 0;
+    font-size: $fs-small;
+  }
+}
 
 .modal {
   position: fixed;
@@ -33,23 +79,3 @@
     opacity: 1;
   }
 }
-
-// .appear {
-//   -webkit-animation-duration: 2s;
-//   animation-duration: 2s;
-//   -webkit-animation-fill-mode: both;
-//   animation-fill-mode: both;
-//   -webkit-animation-name: appear;
-//   animation-name: appear;
-// }
-
-// @keyframes appear {
-//   from {
-//     justify-content: center;
-//     tranform: translateX(-100%);
-//   }
-//   to {
-//     justify-content: space-evenly;
-//     tranform: translateX(0);
-//   }
-// }
