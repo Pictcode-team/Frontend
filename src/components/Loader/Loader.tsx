@@ -8,10 +8,9 @@ export const Loader = ({done}) => {
 			opacity: 1,
 			width: `${done}%`
 		}
-		
 		setStyle(newStyle);
 	}, 200);
-	
+
 	return (
 		<div className="progress">
 			<div className="progress-done" style={style}>
