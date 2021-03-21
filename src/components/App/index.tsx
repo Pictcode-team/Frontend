@@ -6,8 +6,6 @@ import Home from '../../Pages/Home/index';
 import About from '../../Pages/About/index';
 import Error from "../../Pages/Error/index";
 
-import "../../styles/global.scss";
-
 const App = () => {
   return (
     <BrowserRouter>

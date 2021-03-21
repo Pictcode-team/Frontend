@@ -39,6 +39,7 @@ const Home = () => {
           multiple
           onChange={handleUpload}
           type="file"
+          // text="Upload your files"
         />
         {showModal && (
           <div className="modal fadeIn">
