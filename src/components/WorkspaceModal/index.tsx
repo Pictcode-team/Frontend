@@ -3,10 +3,10 @@ import React from 'react';
 import GalleryItem from '../GalleryItem/index';
 import Loader from '../Loader/index';
 
-import folder from '../../assets/img/folder.svg'
-import plus from '../../assets/img/plus.svg'
-import logo from '../../assets/img/logo-pictcode.png'
-import './styles.scss'
+import folder from '../../assets/img/folder.svg';
+import plus from '../../assets/img/plus.svg';
+import logo from '../../assets/img/logo-pictcode.png';
+import './styles.scss';
 
 const WorkspaceModal = (props : any) => {
   return (
