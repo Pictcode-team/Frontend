@@ -5,7 +5,9 @@ import Loader from '../Loader/index';
 
 import folder from '../../assets/img/folder.svg';
 import logo from '../../assets/img/logo-pictcode.png';
+import plus from '../../assets/img/plus.svg';
 import './styles.scss';
+
 import { UseImages } from '../../utils/customHooks/useImages';
 
 interface localImageInterface {
@@ -85,13 +87,18 @@ const WorkspaceModal = (props: any) => {
               />
             </div>
             <div className="workspace_header__right">
-              <input
-                className="workspace_header__right--input"
-                accept="image/*"
-                multiple
-                onChange={handleUpload}
-                type="file"
-              />
+              <div className="workspace_header__right--add">
+                <span>Add</span>
+                <input
+                  name="add_file"
+                  className="workspace_header__right--input"
+                  accept="image/*"
+                  multiple
+                  onChange={handleUpload}
+                  type="file"
+                />
+                <img src={plus} alt=""/>
+              </div>
               <button
                 onClick={props.onClose}
                 className="workspace_header__right--close"
