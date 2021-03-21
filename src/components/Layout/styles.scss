@@ -34,7 +34,7 @@
     cursor: pointer;
 
     &:hover {
-      color: white;
+      color: $light-color;
       transition: all 0.3s ease;
     }
   }

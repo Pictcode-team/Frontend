@@ -1,14 +1,11 @@
 @import '../../styles/global';
 
 .galleryItem {
+  position: relative;
   height: 160px;
   flex-grow: 1;
   margin: 0 0 0.5rem 0.5rem;
   cursor: pointer;
-  position: relative;
-  &:active {
-    border: 2px solid #00b1a1;
-  }
   img {
     height: 100%;
     width: 100%;

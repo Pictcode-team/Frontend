@@ -61,7 +61,7 @@ const WorkspaceModal = (props: any) => {
                 onClick={backToModal}
                 className="workspace_header__image--close"
               >
-                X
+                <img src={plus} alt=""/>
               </button>
             </div>
           </header>
@@ -97,13 +97,12 @@ const WorkspaceModal = (props: any) => {
                   onChange={handleUpload}
                   type="file"
                 />
-                <img src={plus} alt=""/>
               </div>
               <button
                 onClick={props.onClose}
                 className="workspace_header__right--close"
               >
-                X
+                <img src={plus} alt=""/>
               </button>
             </div>
           </header>
