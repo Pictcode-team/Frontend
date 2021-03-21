@@ -1,15 +1,30 @@
-@import '../../styles/base';
+@import '../../styles/global';
 
 .about {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
   color: $primary-color;
+  height: 70%;
+  overflow: scroll;
   &--text {
     width: 50%;
     text-align: justify;
     &-1 {
       margin-bottom: 3rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    margin-top: size($space-regular + 30);
+    &--text {
+      width: 80%;
+      font-size: 0.9rem;
+      &-1 {
+        margin-bottom: 3rem;
+      }
     }
   }
 }
