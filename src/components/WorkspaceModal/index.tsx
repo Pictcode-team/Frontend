@@ -1,43 +1,139 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import GalleryItem from '../GalleryItem/index';
 import Loader from '../Loader/index';
 
 import folder from '../../assets/img/folder.svg';
-import plus from '../../assets/img/plus.svg';
 import logo from '../../assets/img/logo-pictcode.png';
+import plus from '../../assets/img/plus.svg';
 import './styles.scss';
 
-const WorkspaceModal = (props : any) => {
+import { UseImages } from '../../utils/customHooks/useImages';
+
+interface localImageInterface {
+  image: undefined | string;
+}
+
+const WorkspaceModal = (props: any) => {
+  const [localImages, setLocalImages] = useState([]);
+  const [localImage, setLocalImage] = useState<localImageInterface>({
+    image: undefined,
+  });
+  const { upload, images, isLoading } = UseImages();
+
+  console.log(isLoading);
+
+  useEffect(() => {
+    setLocalImages((prevImages) => prevImages.concat(images));
+  }, [images]);
+
+  useEffect(() => {
+    setLocalImages(props.files);
+  }, [props.files]);
+
+  const deleteItem = (entryUrl: string): void => {
+    setLocalImages((localImages) =>
+      localImages.filter((url) => url !== entryUrl)
+    );
+  };
+
+  const setImage = (entryUrl: string) => {
+    setLocalImage({ image: entryUrl });
+  };
+
+  const backToModal = () => {
+    setLocalImage({ image: undefined });
+  };
+
+  const handleUpload = async (e: any) => {
+    await upload(e);
+  };
+
+  let { image } = localImage;
+
   return (
     <div className="workspace">
-      <header className="workspace_header">
-        <div className="workspace_header__left">
-          <input type="text" name="gallery name" placeholder='Your Folder Name' id="" className="workspace_header__left--name"/>
-          <img src={folder} alt="" className="workspace_header__left--folder"/>
-        </div>
-        <div className="workspace_header__right">
-          <div className="workspace_header__right--add">
-            <span>Add</span>
-            <button className="workspace_header__right--plus">
-              <img src={plus} alt=""/>
-            </button>
+      {image ? (
+        <>
+          <header className="workspace_header__image">
+            <div>
+              <button
+                onClick={backToModal}
+                className="workspace_header__image--close"
+              >
+                X
+              </button>
+            </div>
+          </header>
+          <figure className="workspace_figure">
+            <img src={localImage.image} alt="full size image" />
+          </figure>
+        </>
+      ) : (
+        <>
+          <header className="workspace_header">
+            <div className="workspace_header__left">
+              <input
+                type="text"
+                name="gallery name"
+                placeholder="Your Folder Name"
+                id=""
+                className="workspace_header__left--name"
+              />
+              <img
+                src={folder}
+                alt="folder"
+                className="workspace_header__left--folder"
+              />
+            </div>
+            <div className="workspace_header__right">
+              <div className="workspace_header__right--add">
+                <span>Add</span>
+                <input
+                  name="add_file"
+                  className="workspace_header__right--input"
+                  accept="image/*"
+                  multiple
+                  onChange={handleUpload}
+                  type="file"
+                />
+                <img src={plus} alt=""/>
+              </div>
+              <button
+                onClick={props.onClose}
+                className="workspace_header__right--close"
+              >
+                X
+              </button>
+            </div>
+          </header>
+          <div className="workspace_gallery">
+            {!!localImages.length ? (
+              localImages.map((item, index) => (
+                <GalleryItem
+                  deleteItem={deleteItem}
+                  setImage={setImage}
+                  key={index}
+                  ImageUrl={item}
+                />
+              ))
+            ) : isLoading ? (
+              <Loader />
+            ) : (
+              <h2>You dont have any item yet</h2>
+            )}
           </div>
-          <button onClick={props.onClose} className="workspace_header__right--close">X</button>
-        </div>
-      </header>
-      <div className="workspace_gallery">
-        { !!props.files.length ? (
-          props.files?.map((item, index) => <GalleryItem key={index} ImageUrl={item}/>))
-          : <Loader/>
-        }
-      </div>
-      <button className="workspace_footer" onClick={e => props.handleEvent(true)}>
-        <span>Get your</span>
-        <img src={logo} alt=""/>
-      </button>
+          <button
+            className="workspace_footer"
+            onClick={(e) => props.handleEvent(true)}
+          >
+            <span>Get your</span>
+            <img src={logo} alt="" />
+          </button>
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default WorkspaceModal;

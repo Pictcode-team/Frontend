@@ -13,7 +13,6 @@ const devConfig = {
     port: 3000,
     historyApiFallback: true,
     contentBase: '../dist',
-    open: 'brave' || 'chrome',
     hot: true,
   },
   target: 'web',
