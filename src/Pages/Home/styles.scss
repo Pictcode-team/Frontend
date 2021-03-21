@@ -1,4 +1,54 @@
-@import '../../styles/base';
+@import '../../styles/global';
+
+.upload {
+  @extend .flex-y;
+  margin: 0 auto;
+  margin-top: size($space-big);
+  height: 75vh;
+
+  &__form {
+    position: relative;
+
+    &::before {
+      content: url(../../assets/img/cloud.png);
+      height: size(60);
+      background-color: $transparency;
+      position: absolute;
+      bottom: 0;
+      border: black 1px dashed;
+      z-index: 1;
+      padding: 40%;
+    }
+  }
+
+  &__files {
+    position: relative;
+    z-index: 2;
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+      height: size($space-xl);
+    }
+    &::before {
+      content: 'Upload your files';
+      background-color: $primary-color;
+      color: white;
+      font-family: 'Poppins';
+      font-size: size($fs-regular);
+      padding: size($space-xl);
+      margin-left: -3%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -75%;
+      cursor: pointer;
+    }
+  }
+
+  p {
+    margin-top: 0.1rem;
+    font-size: $fs-small;
+  }
+}
 
 .modal {
   position: fixed;
@@ -31,5 +81,27 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .upload {
+    margin-top: size($space-big);
+
+    &__files {
+      &::before {
+        font-size: 1rem;
+        margin-left: 0;
+      }
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .upload {
+    margin-top: size($space-huge);
   }
 }
