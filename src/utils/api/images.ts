@@ -13,9 +13,9 @@ type PokemonData = {
   };
 };
 
-export const uploadImages = async (rawData) => {
+export const uploadImages = async (rawData: any) => {
   const formdata = new FormData();
-  rawData.forEach((element) => {
+  rawData.forEach((element: any) => {
     formdata.append('images', element);
   });
 
