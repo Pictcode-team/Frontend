@@ -3,7 +3,7 @@ import { toast, ToastOptions } from 'material-react-toastify';
 
 export function useNotification() {
   const defaultOptions: ToastOptions = {
-    position: 'top-left',
+    position: 'bottom-left',
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
