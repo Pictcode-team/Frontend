@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { uploadImages } from '../api/images';
+import { imagesContext } from '../context/imagesContext.jsx';
+import { useNotification } from './useNotification';
 
-export const UseImages = () => {
-  const [generatedQR, setGeneratedQR] = useState<boolean>(false);
-  const [images, setImages] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export const useImages = () => {
+  const { rawData, setImages, generatedQR, setUid, setIsLoading } = useContext(
+    imagesContext
+  );
+  const { successNotification } = useNotification();
 
   const readAll = (files) => {
     return [...files].map(
@@ -16,24 +20,30 @@ export const UseImages = () => {
     );
   };
 
-  const upload = async (e: any) => {
-    setIsLoading(true);
-    const files = e.target.files;
-    const result = await Promise.all(readAll(files)).then((images) =>
-      setImages(images)
-    );
-    setIsLoading(false);
-    return result;
+  const upload = async () =>
+    await Promise.all(readAll(rawData)).then((images) => setImages(images));
+
+  const deleteItem = (entryUrl: string): void => {
+    setImages((prevState) => prevState.filter((url) => url !== entryUrl));
   };
 
-  return {
-    generatedQR,
-    setGeneratedQR,
-    images,
-    setImages,
-    readAll,
-    upload,
-    isLoading,
-    setIsLoading,
-  };
+  useEffect(() => {
+    upload();
+  }, [rawData]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await uploadImages(rawData);
+      const { uuid } = data;
+      setUid(`/public/${uuid}`);
+      successNotification('Images uploaded correctly');
+      setIsLoading(false);
+    };
+
+    if (generatedQR) {
+      getData();
+    }
+  }, [generatedQR]);
+
+  return { upload, deleteItem };
 };

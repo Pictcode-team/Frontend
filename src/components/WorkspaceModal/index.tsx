@@ -1,41 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import GalleryItem from '../GalleryItem/index';
-import Loader from '../Loader/index';
 
 import folder from '../../assets/img/folder.svg';
 import logo from '../../assets/img/logo-pictcode.png';
 import plus from '../../assets/img/plus.svg';
 import './styles.scss';
-
-import { UseImages } from '../../utils/customHooks/useImages';
+import { imagesContext } from '../../utils/context/imagesContext.jsx';
+import { useImages } from '../../utils/customHooks/useImages';
 
 interface localImageInterface {
   image: undefined | string;
 }
 
 const WorkspaceModal = (props: any) => {
-  const [localImages, setLocalImages] = useState([]);
   const [localImage, setLocalImage] = useState<localImageInterface>({
     image: undefined,
   });
-  const { upload, images, isLoading } = UseImages();
+  const { images, setRawData, generatedQR } = useContext(imagesContext);
 
-  console.log(isLoading);
-
-  useEffect(() => {
-    setLocalImages((prevImages) => prevImages.concat(images));
-  }, [images]);
-
-  useEffect(() => {
-    setLocalImages(props.files);
-  }, [props.files]);
-
-  const deleteItem = (entryUrl: string): void => {
-    setLocalImages((localImages) =>
-      localImages.filter((url) => url !== entryUrl)
-    );
-  };
+  const { deleteItem } = useImages();
 
   const setImage = (entryUrl: string) => {
     setLocalImage({ image: entryUrl });
@@ -45,8 +29,9 @@ const WorkspaceModal = (props: any) => {
     setLocalImage({ image: undefined });
   };
 
-  const handleUpload = async (e: any) => {
-    await upload(e);
+  const handleUpload = (e) => {
+    const files: never[] = Array.from(e.target.files);
+    setRawData((prevState) => [...prevState, ...files]);
   };
 
   let { image } = localImage;
@@ -61,7 +46,7 @@ const WorkspaceModal = (props: any) => {
                 onClick={backToModal}
                 className="workspace_header__image--close"
               >
-                <img src={plus} alt=""/>
+                <img src={plus} alt="" />
               </button>
             </div>
           </header>
@@ -73,13 +58,7 @@ const WorkspaceModal = (props: any) => {
         <>
           <header className="workspace_header">
             <div className="workspace_header__left">
-              <input
-                type="text"
-                name="gallery name"
-                placeholder="Your Folder Name"
-                id=""
-                className="workspace_header__left--name"
-              />
+              <div className="workspace_header__left--name" />
               <img
                 src={folder}
                 alt="folder"
@@ -88,39 +67,38 @@ const WorkspaceModal = (props: any) => {
             </div>
             <div className="workspace_header__right">
               <div className="workspace_header__right--add">
-                <span>Add</span>
-                <input
-                  name="add_file"
-                  className="workspace_header__right--input"
-                  accept="image/*"
-                  multiple
-                  onChange={handleUpload}
-                  type="file"
-                />
+                {generatedQR === false && (
+                  <>
+                    <span>Add</span>
+                    <input
+                      name="add_file"
+                      className="workspace_header__right--input"
+                      accept="image/*"
+                      multiple
+                      onChange={handleUpload}
+                      type="file"
+                    />
+                  </>
+                )}
               </div>
               <button
                 onClick={props.onClose}
                 className="workspace_header__right--close"
               >
-                <img src={plus} alt=""/>
+                <img src={plus} alt="" />
               </button>
             </div>
           </header>
           <div className="workspace_gallery">
-            {!!localImages.length ? (
-              localImages.map((item, index) => (
+            {images &&
+              images.map((item, index) => (
                 <GalleryItem
                   deleteItem={deleteItem}
                   setImage={setImage}
                   key={index}
                   ImageUrl={item}
                 />
-              ))
-            ) : isLoading ? (
-              <Loader />
-            ) : (
-              <h2>You dont have any item yet</h2>
-            )}
+              ))}
           </div>
           <button
             className="workspace_footer"
