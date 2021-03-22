@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { uploadImages } from '../api/images';
+import { imagesContext } from '../context/imagesContext.jsx';
 
 export const useImages = () => {
-  const [generatedQR, setGeneratedQR] = useState<boolean>(false);
-  const [images, setImages] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { rawData, setImages } = useContext(imagesContext);
 
   const readAll = (files) => {
     return [...files].map(
@@ -16,24 +16,18 @@ export const useImages = () => {
     );
   };
 
-  const upload = async (e: any) => {
-    setIsLoading(true);
-    const files = e.target.files;
-    const result = await Promise.all(readAll(files)).then((images) =>
-      setImages(images)
-    );
-    setIsLoading(false);
-    return result;
+  const upload = async () =>
+    await Promise.all(readAll(rawData)).then((images) => setImages(images));
+
+  const deleteItem = (entryUrl: string): void => {
+    setImages((prevState) => prevState.filter((url) => url !== entryUrl));
   };
 
-  return {
-    generatedQR,
-    setGeneratedQR,
-    images,
-    setImages,
-    readAll,
-    upload,
-    isLoading,
-    setIsLoading,
-  };
+  useEffect(() => {
+    upload();
+  }, [rawData]);
+
+  const sendImages = (rawData) => uploadImages(rawData);
+
+  return { upload, deleteItem };
 };

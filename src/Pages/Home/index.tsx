@@ -1,40 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import WorkspaceModal from '../../components/WorkspaceModal/index';
 import QRModal from '../../components/QRModal';
-import { useImages } from '../../utils/customHooks/useImages';
 import './styles.scss';
 import { useNotification } from '../../utils/customHooks/useNotification';
+import { useImages } from '../../utils/customHooks/useImages';
+import { imagesContext } from '../../utils/context/imagesContext.jsx';
 
 const Home = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const {
-    upload,
-    setGeneratedQR,
-    setImages,
-    images,
-    generatedQR,
-  } = useImages();
+  const { setGeneratedQR, generatedQR, setRawData, setImages } = useContext(
+    imagesContext
+  );
 
   const { infoNotification } = useNotification();
 
+  const { upload } = useImages();
+
   useEffect(() => {
-    infoNotification('Remember you can only upload 10 images at the time')
+    infoNotification('Remember you can only upload 10 images at the time');
   }, []);
 
-  const handleUpload = async (e: any) => {
+  const handleUpload = (e) => {
     setShowModal(true);
-    await upload(e);
+    const files: never[] = Array.from(e.target.files);
+    setRawData((prevState) => [...prevState, ...files]);
+    upload();
   };
 
   const handleCloseModal = (e: boolean) => {
     setShowModal(false);
-    setGeneratedQR(false);
+    setGeneratedQR((bool) => (bool = false));
+    setRawData([]);
     setImages([]);
   };
 
   const handleOpenQRModal = (e: boolean) => {
-    setGeneratedQR(true);
+    setGeneratedQR((bool) => (bool = true));
   };
 
   return (
@@ -46,7 +48,6 @@ const Home = () => {
           multiple
           onChange={handleUpload}
           type="file"
-          // text="Upload your files"
         />
         {showModal && (
           <div className="modal fadeIn">
@@ -54,7 +55,6 @@ const Home = () => {
               isOpen={handleUpload}
               onClose={handleCloseModal}
               handleEvent={handleOpenQRModal}
-              files={images}
             />
             {generatedQR === true && (
               <QRModal
