@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const UseImages = () => {
+export const useImages = () => {
   const [generatedQR, setGeneratedQR] = useState<boolean>(false);
   const [images, setImages] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);

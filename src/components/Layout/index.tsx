@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'material-react-toastify';
 
 import Logo from 'images/logo-pictcode.png';
 import NotionLogo from 'images/notion.png';
 import GithubLogo from 'images/github1.png';
 
-import './styles.scss'
+import './styles.scss';
 
 const Layout = (props: any) => {
-
   return (
-    <div className='container background-1'>
+    <div className="container background-1">
+      <ToastContainer />
       <header className="header">
         <Link to="/">
           <img src={Logo} alt="logo-pictcode" />
@@ -34,7 +35,7 @@ const Layout = (props: any) => {
         <p>Transfer team - 2021</p>
       </footer>
     </div>
-  )
-}
+  );
+};
 
 export default Layout;
