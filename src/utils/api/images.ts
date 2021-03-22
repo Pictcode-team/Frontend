@@ -14,21 +14,16 @@ type PokemonData = {
 };
 
 export const uploadImages = async (rawData) => {
-  console.log(rawData);
-  // const formdata = new FormData();
-  // formdata.append('images', rawData[0]);
+  const formdata = new FormData();
+  rawData.forEach((element) => {
+    formdata.append('images', element);
+  });
 
-  // console.log(formdata);
+  const response = await fetch('https://www.pictocode.xyz/api/v1/images/', {
+    method: 'POST',
+    body: formdata,
+    redirect: 'follow',
+  }).then((response) => response.json());
 
-  // const response = await fetch('https://www.pictocode.xyz/api/v1/images/', {
-  //   method: 'POST',
-  //   body: formdata,
-  //   redirect: 'follow',
-  // })
-  //   .then((response) => response.text())
-  //   .then((result) => console.log(result));
-
-  // console.log(response);
-
-  // return response;
+  return response;
 };

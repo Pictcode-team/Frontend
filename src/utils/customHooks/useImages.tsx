@@ -1,9 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { uploadImages } from '../api/images';
 import { imagesContext } from '../context/imagesContext.jsx';
+import { useNotification } from './useNotification';
 
 export const useImages = () => {
-  const { rawData, setImages } = useContext(imagesContext);
+  const { rawData, setImages, generatedQR, setUid, setIsLoading } = useContext(
+    imagesContext
+  );
+  const { successNotification } = useNotification();
 
   const readAll = (files) => {
     return [...files].map(
@@ -27,7 +31,19 @@ export const useImages = () => {
     upload();
   }, [rawData]);
 
-  const sendImages = (rawData) => uploadImages(rawData);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await uploadImages(rawData);
+      const { uuid } = data;
+      setUid(`/public/${uuid}`);
+      successNotification('Images uploaded correctly');
+      setIsLoading(false);
+    };
+
+    if (generatedQR) {
+      getData();
+    }
+  }, [generatedQR]);
 
   return { upload, deleteItem };
 };

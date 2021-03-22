@@ -9,9 +9,15 @@ import { imagesContext } from '../../utils/context/imagesContext.jsx';
 const Home = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const { setGeneratedQR, generatedQR, setRawData, setImages } = useContext(
-    imagesContext
-  );
+  const {
+    setGeneratedQR,
+    generatedQR,
+    setRawData,
+    setImages,
+    uid,
+    isLoading,
+    setUid,
+  } = useContext(imagesContext);
 
   const { infoNotification } = useNotification();
 
@@ -33,6 +39,7 @@ const Home = () => {
     setGeneratedQR((bool) => (bool = false));
     setRawData([]);
     setImages([]);
+    setGeneratedQR(false);
   };
 
   const handleOpenQRModal = (e: boolean) => {
@@ -56,11 +63,8 @@ const Home = () => {
               onClose={handleCloseModal}
               handleEvent={handleOpenQRModal}
             />
-            {generatedQR === true && (
-              <QRModal
-                isOpen={generatedQR}
-                GeneratedUrl="here must be the url"
-              />
+            {generatedQR === true && isLoading === false && (
+              <QRModal isOpen={generatedQR} GeneratedUrl={uid} />
             )}
           </div>
         )}

@@ -17,9 +17,9 @@ const WorkspaceModal = (props: any) => {
   const [localImage, setLocalImage] = useState<localImageInterface>({
     image: undefined,
   });
-  const { images, setRawData } = useContext(imagesContext);
+  const { images, setRawData, generatedQR } = useContext(imagesContext);
 
-  const { deleteItem } = useImages()
+  const { deleteItem } = useImages();
 
   const setImage = (entryUrl: string) => {
     setLocalImage({ image: entryUrl });
@@ -58,13 +58,7 @@ const WorkspaceModal = (props: any) => {
         <>
           <header className="workspace_header">
             <div className="workspace_header__left">
-              <input
-                type="text"
-                name="gallery name"
-                placeholder="Your Folder Name"
-                id=""
-                className="workspace_header__left--name"
-              />
+              <div className="workspace_header__left--name" />
               <img
                 src={folder}
                 alt="folder"
@@ -73,15 +67,19 @@ const WorkspaceModal = (props: any) => {
             </div>
             <div className="workspace_header__right">
               <div className="workspace_header__right--add">
-                <span>Add</span>
-                <input
-                  name="add_file"
-                  className="workspace_header__right--input"
-                  accept="image/*"
-                  multiple
-                  onChange={handleUpload}
-                  type="file"
-                />
+                {generatedQR === false && (
+                  <>
+                    <span>Add</span>
+                    <input
+                      name="add_file"
+                      className="workspace_header__right--input"
+                      accept="image/*"
+                      multiple
+                      onChange={handleUpload}
+                      type="file"
+                    />
+                  </>
+                )}
               </div>
               <button
                 onClick={props.onClose}

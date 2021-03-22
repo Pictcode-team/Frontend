@@ -5,6 +5,8 @@ function ImagesProvider({ children }) {
   const [generatedQR, setGeneratedQR] = useState(false);
   const [rawData, setRawData] = useState([]);
   const [images, setImages] = useState([]);
+  const [uid, setUid] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <imagesContext.Provider value={{
@@ -13,7 +15,11 @@ function ImagesProvider({ children }) {
       generatedQR,
       setGeneratedQR,
       rawData,
-      setRawData
+      setRawData,
+      uid,
+      setUid,
+      setIsLoading,
+      isLoading
     }}
     >
       {children}
