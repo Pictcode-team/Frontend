@@ -11,8 +11,8 @@ $green-light: #4ed5c3;
 $transparency: rgba(255, 255, 255, 0.1);
 $over-image: linear-gradient(
   180deg,
-  rgba(255, 255, 255, 0.2) 0%,
-  rgba(0, 0, 0, 0.35) 100%
+  rgba(255, 255, 255, 0.3) 0%,
+  rgba(0, 0, 0, 0.8) 100%
 );
 
 $fs-small: 12;
@@ -52,6 +52,9 @@ body {
 .flex-x {
   display: flex;
   align-items: center;
+}
+.boxShadow {
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 // @media screen and (max-width: 1400px)

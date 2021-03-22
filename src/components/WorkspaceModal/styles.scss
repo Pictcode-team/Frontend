@@ -10,6 +10,11 @@
   height: 60%;
   border-radius: 0.5rem;
 
+  &_null {
+    align-self: center;
+    justify-self: center;
+  }
+
   &_header {
     box-sizing: border-box;
     display: flex;

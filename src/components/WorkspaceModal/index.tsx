@@ -119,7 +119,7 @@ const WorkspaceModal = (props: any) => {
             ) : isLoading ? (
               <Loader />
             ) : (
-              <h2>You dont have any item yet</h2>
+              <h2 className='workspace_null'>You dont have any item yet</h2>
             )}
           </div>
           <button
