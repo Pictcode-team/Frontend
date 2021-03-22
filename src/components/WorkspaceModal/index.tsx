@@ -8,7 +8,7 @@ import logo from '../../assets/img/logo-pictcode.png';
 import plus from '../../assets/img/plus.svg';
 import './styles.scss';
 
-import { UseImages } from '../../utils/customHooks/useImages';
+import { useImages } from '../../utils/customHooks/useImages';
 
 interface localImageInterface {
   image: undefined | string;
@@ -19,7 +19,7 @@ const WorkspaceModal = (props: any) => {
   const [localImage, setLocalImage] = useState<localImageInterface>({
     image: undefined,
   });
-  const { upload, images, isLoading } = UseImages();
+  const { upload, images, isLoading } = useImages();
 
   console.log(isLoading);
 

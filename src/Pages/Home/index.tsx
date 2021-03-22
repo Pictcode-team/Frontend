@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import WorkspaceModal from '../../components/WorkspaceModal/index';
 import QRModal from '../../components/QRModal';
-import { UseImages } from '../../utils/customHooks/useImages';
+import { useImages } from '../../utils/customHooks/useImages';
 import './styles.scss';
+import { useNotification } from '../../utils/customHooks/useNotification';
 
 const Home = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
+
   const {
     upload,
     setGeneratedQR,
     setImages,
     images,
     generatedQR,
-    setIsLoading,
-  } = UseImages();
+  } = useImages();
+
+  const { infoNotification } = useNotification();
+
+  useEffect(() => {
+    infoNotification('Remember you can only upload 10 images at the time')
+  }, []);
 
   const handleUpload = async (e: any) => {
     setShowModal(true);
@@ -24,7 +31,7 @@ const Home = () => {
     setShowModal(false);
     setGeneratedQR(false);
     setImages([]);
-  }
+  };
 
   const handleOpenQRModal = (e: boolean) => {
     setGeneratedQR(true);
