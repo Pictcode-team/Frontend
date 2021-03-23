@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { uploadImages } from '../api/images';
+import { uploadImages, downloadImages } from '../api/images';
 import { imagesContext } from '../context/imagesContext.jsx';
 import { useNotification } from './useNotification';
 
@@ -12,7 +12,7 @@ export const useImages = () => {
 	const readAll = (files: any) => {
 		return [...files].map(
 			(file) =>
-				new Promise((resolve, reject) => {
+				new Promise((resolve) => {
 					const reader: any = new FileReader();
 					reader.readAsDataURL(file);
 					reader.onload = () => resolve(reader.result);
@@ -29,6 +29,8 @@ export const useImages = () => {
 		);
 	};
 
+	const download = (uid: string) => downloadImages(uid);
+
 	useEffect(() => {
 		upload();
 	}, [rawData]);
@@ -37,7 +39,7 @@ export const useImages = () => {
 		const getData = async () => {
 			const data = await uploadImages(rawData);
 			const { uuid } = data;
-			setUid(`/public/${uuid}`);
+			setUid(`http://localhost:3000/public/${uuid}`);
 			successNotification('Images uploaded correctly');
 			setIsLoading(false);
 		};
@@ -47,5 +49,5 @@ export const useImages = () => {
 		}
 	}, [generatedQR]);
 
-	return { upload, deleteItem };
+	return { upload, deleteItem, download };
 };

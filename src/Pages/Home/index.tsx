@@ -16,7 +16,6 @@ const Home = () => {
 		setImages,
 		uid,
 		isLoading,
-		setUid,
 	} = useContext(imagesContext);
 
 	const { infoNotification } = useNotification();

@@ -98,12 +98,14 @@ const WorkspaceModal = (props: any) => {
 								/>
 							))}
 					</div>
-					<button
-						className='workspace_footer'
-						onClick={(e) => props.handleEvent(true)}>
-						<span>Get your</span>
-						<img src={logo} alt='' />
-					</button>
+					{generatedQR === false && (
+						<button
+							className='workspace_footer'
+							onClick={(e) => props.handleEvent(true)}>
+							<span>Get your</span>
+							<img src={logo} alt='' />
+						</button>
+					)}
 				</>
 			)}
 		</div>

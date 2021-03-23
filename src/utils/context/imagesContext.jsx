@@ -8,6 +8,8 @@ function ImagesProvider({ children }) {
   const [uid, setUid] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log(uid)
+
   return (
     <imagesContext.Provider value={{
       setImages,
