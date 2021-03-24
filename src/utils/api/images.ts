@@ -1,7 +1,7 @@
 export const uploadImages = async (rawData: any) => {
 	const formdata = new FormData();
-	rawData.forEach((element: any) => {
-		formdata.append('images', element,'name');
+	rawData.forEach((element: any, index: number) => {
+		formdata.append('images', element, `image-number-${index}`);
 	});
 
 	const response = await fetch('https://www.pictocode.xyz/api/v1/images/', {
@@ -16,14 +16,11 @@ export const uploadImages = async (rawData: any) => {
 export const downloadImages = async (uid: string) => {
 	var formdata = new FormData();
 
-	fetch(`https://pictocode.xyz/api/v1/images/${uid}`, {
+	const response = fetch(`https://pictocode.xyz/api/v1/images/${uid}`, {
 		method: 'POST',
 		body: formdata,
 		redirect: 'follow',
-	})
-		.then((response) => response.text())
-		.then((result) => console.log(result))
-		.catch((error) => console.log('error', error));
+	}).then((response) => response.json());
 
-	// return response;
+	return response;
 };

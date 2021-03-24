@@ -1,13 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { uploadImages, downloadImages } from '../api/images';
 import { imagesContext } from '../context/imagesContext.jsx';
 import { useNotification } from './useNotification';
 
 export const useImages = () => {
-	const { rawData, setImages, generatedQR, setUid, setIsLoading } = useContext(
-		imagesContext,
-	);
-	const { successNotification } = useNotification();
+	const [canGetData, setCanGetData] = useState(true);
+	const {
+		rawData,
+		setImages,
+		generatedQR,
+		setUid,
+		setIsLoading,
+		setRawData,
+	} = useContext(imagesContext);
+	const { successNotification, errorNotification } = useNotification();
 
 	const readAll = (files: any) => {
 		return [...files].map(
@@ -29,10 +35,28 @@ export const useImages = () => {
 		);
 	};
 
-	const download = (uid: string) => downloadImages(uid);
+	const download = (uid: string) => {
+		const getData = async () => {
+			const data = await downloadImages(uid);
+			const { images } = data;
+			if (images) {
+				setImages(images);
+				successNotification('Images downloaded successfully');
+			} else {
+				errorNotification('Your url expired ');
+			}
+		};
+
+		getData();
+	};
 
 	useEffect(() => {
-		upload();
+		if (rawData.length <= 10) {
+			upload();
+		} else {
+			errorNotification('You can only upload 10 images at the time');
+			setRawData([]);
+		}
 	}, [rawData]);
 
 	useEffect(() => {
@@ -40,12 +64,14 @@ export const useImages = () => {
 			const data = await uploadImages(rawData);
 			const { uuid } = data;
 			setUid(`http://localhost:3000/public/${uuid}`);
-			successNotification('Images uploaded correctly');
 			setIsLoading(false);
+			console.log(`http://localhost:3000/public/${uuid}`);
 		};
 
-		if (generatedQR) {
+		if (generatedQR && canGetData === true) {
 			getData();
+			setCanGetData(false);
+			successNotification('Images uploaded correctly');
 		}
 	}, [generatedQR]);
 
