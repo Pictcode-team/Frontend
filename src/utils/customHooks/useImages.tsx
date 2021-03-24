@@ -63,9 +63,9 @@ export const useImages = () => {
 		const getData = async () => {
 			const data = await uploadImages(rawData);
 			const { uuid } = data;
-			setUid(`https://pictcode-2021.web.app/${uuid}`);
+			setUid(`https://pictcode-2021.web.app/public/${uuid}`);
 			setIsLoading(false);
-			console.log(`https://pictcode-2021.web.app/${uuid}`);
+			console.log(`https://pictcode-2021.web.app/public/${uuid}`);
 		};
 
 		if (generatedQR && canGetData === true) {
