@@ -100,6 +100,7 @@ const WorkspaceModal = (props: any) => {
 					</div>
 					{generatedQR === false && (
 						<button
+							disabled={images.length === 0}
 							className='workspace_footer'
 							onClick={(e) => props.handleEvent(true)}>
 							<span>Get your</span>
