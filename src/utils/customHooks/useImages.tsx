@@ -1,39 +1,79 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { uploadImages, downloadImages } from '../api/images';
+import { imagesContext } from '../context/imagesContext.jsx';
+import { useNotification } from './useNotification';
 
-export const UseImages = () => {
-  const [generatedQR, setGeneratedQR] = useState<boolean>(false);
-  const [images, setImages] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export const useImages = () => {
+	const [canGetData, setCanGetData] = useState(true);
+	const {
+		rawData,
+		setImages,
+		generatedQR,
+		setUid,
+		setIsLoading,
+		setRawData,
+	} = useContext(imagesContext);
+	const { successNotification, errorNotification } = useNotification();
 
-  const readAll = (files) => {
-    return [...files].map(
-      (file) =>
-        new Promise((resolve, reject) => {
-          const reader: any = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = () => resolve(reader.result);
-        })
-    );
-  };
+	const readAll = (files: any) => {
+		return [...files].map(
+			(file) =>
+				new Promise((resolve) => {
+					const reader: any = new FileReader();
+					reader.readAsDataURL(file);
+					reader.onload = () => resolve(reader.result);
+				}),
+		);
+	};
 
-  const upload = async (e: any) => {
-    setIsLoading(true);
-    const files = e.target.files;
-    const result = await Promise.all(readAll(files)).then((images) =>
-      setImages(images)
-    );
-    setIsLoading(false);
-    return result;
-  };
+	const upload = async () =>
+		await Promise.all(readAll(rawData)).then((images) => setImages(images));
 
-  return {
-    generatedQR,
-    setGeneratedQR,
-    images,
-    setImages,
-    readAll,
-    upload,
-    isLoading,
-    setIsLoading,
-  };
+	const deleteItem = (entryUrl: string): void => {
+		setImages((prevState: any) =>
+			prevState.filter((url: string) => url !== entryUrl),
+		);
+	};
+
+	const download = (uid: string) => {
+		const getData = async () => {
+			const data = await downloadImages(uid);
+			const { images } = data;
+			if (images) {
+				setImages(images);
+				successNotification('Images downloaded successfully');
+			} else {
+				errorNotification('Your url expired ');
+			}
+		};
+
+		getData();
+	};
+
+	useEffect(() => {
+		if (rawData.length <= 10) {
+			upload();
+		} else {
+			errorNotification('You can only upload 10 images at the time');
+			setRawData([]);
+		}
+	}, [rawData]);
+
+	useEffect(() => {
+		const getData = async () => {
+			const data = await uploadImages(rawData);
+			const { uuid } = data;
+			setUid(`https://pictcode-2021.web.app/public/${uuid}`);
+			setIsLoading(false);
+			console.log(`https://pictcode-2021.web.app/${uuid}`);
+		};
+
+		if (generatedQR && canGetData === true) {
+			getData();
+			setCanGetData(false);
+			successNotification('Images uploaded correctly');
+		}
+	}, [generatedQR]);
+
+	return { upload, deleteItem, download };
 };
